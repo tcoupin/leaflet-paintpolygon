@@ -1,0 +1,26 @@
+{
+  "name": "leaflet-paintpolygon",
+  "version": "1.0.0",
+  "description": "Leaflet plugin to create polygon with circle, for touchscreen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tcoupin/leaflet-paintpolygon.git"
+  },
+  "keywords": [
+    "leaflet",
+    "create",
+    "polygon",
+    "circle",
+    "paint"
+  ],
+  "author": "Thibault Coupin <thibault.coupin@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/tcoupin/leaflet-paintpolygon/issues"
+  },
+  "homepage": "https://github.com/tcoupin/leaflet-paintpolygon#readme"
+}
