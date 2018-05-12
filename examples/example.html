@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Quick Start - Leaflet</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+        <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css"/>
+        <script src="../node_modules/leaflet/dist/leaflet.js"></script>
+        <script src="../src/PaintPolygon.js"></script>
+        <link rel="stylesheet" href="../src/PaintPolygon.css"/>
+        <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+
+        <style type="text/css">
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            html, body, #mapid {
+                height: 100%;
+                width: 100vw;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="mapid"></div>
+        <script>
+            var map = L.map('mapid').setView([43.605413, 3.879568], 10);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: 'abcd',
+                minZoom: 0,
+                maxZoom: 20,
+                ext: 'png'
+            }).addTo(map);
+
+            var paintpolygonControl = L.control.paintPolygon().addTo(map);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+
+/*   Icons  */
+
+.leaflet-control-paintpolygon-icon {
+    background-image: url('./PaintPolygon.svg');
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+}
+
+.leaflet-control-paintpolygon-icon-active {
+    -webkit-filter: invert(75%); /* Safari 6.0 - 9.0 */
+    filter: invert(75%);
+}
+
+.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-brush {
+    background-position: 0px 0px;
+}
+
+.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-eraser {
+    background-position: 0px -30px;
+}
+
+.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-size {
+    background-position: 0px -60px;
+}
+
+
+/* Menu */
+
+.leaflet-control-paintpolygon-menu  {
+    background-color: #fff;
+    position: absolute;
+    border: 0!important;
+    max-width: 0;
+    max-height: 30px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.leaflet-control-paintpolygon-menu-content  {
+    padding: 5px;
+    display: inline-block;
+    max-width: 250px;
+}
+
+.leaflet-control-paintpolygon-menu-open  {
+    border: inherit!important;
+    max-width: 250px;
+    max-height: 200px;
+}
+
+.leaflet-control-container .leaflet-top.leaflet-right .leaflet-control-paintpolygon-menu {
+    top: 60px;
+    right: 30px;
+}
+.leaflet-control-container .leaflet-top.leaflet-left .leaflet-control-paintpolygon-menu {
+    top: 60px;
+    left: 30px;
+}
+.leaflet-control-container .leaflet-bottom.leaflet-right .leaflet-control-paintpolygon-menu {
+    bottom: 0px;
+    right: 30px;
+}
+.leaflet-control-container .leaflet-bottom.leaflet-left .leaflet-control-paintpolygon-menu {
+    bottom: 0px;
+    left: 30px;
+}
+

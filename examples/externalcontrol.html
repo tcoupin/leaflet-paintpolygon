@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Quick Start - Leaflet</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+        <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css"/>
+        <script src="../node_modules/leaflet/dist/leaflet.js"></script>
+        <script src="../src/PaintPolygon.js"></script>
+        <link rel="stylesheet" href="../src/PaintPolygon.css"/>
+        <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+
+        <style type="text/css">
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            html, body {
+                height: 100%;
+                width: 100vw;
+            }
+            #mapid {
+                display: inline-block;
+                height: 100%;
+                width: 80vw;
+            }
+            #controlid {
+                display: inline-block;
+                height: 100%;
+                width: 18vw;
+                vertical-align: middle;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="mapid"></div>
+        <div id="controlid">
+            <button id="drawBtn">Draw</button>
+            <button id="eraseBtn">Erase</button>
+            <button id="stopBtn" disabled="true">Stop</button>
+            <input id="radiusInput" type="range" min="10" max="50" value="30">
+        </div>
+        <script>
+            var map = L.map('mapid').setView([43.605413, 3.879568], 10);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+                attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: 'abcd',
+                minZoom: 0,
+                maxZoom: 20,
+                ext: 'png'
+            }).addTo(map);
+
+            var paintpolygonControl = L.control.paintPolygon({noui: true}).addTo(map);
+            
+            var drawBtn = document.getElementById("drawBtn"),
+                    eraseBtn = document.getElementById("eraseBtn"),
+                    stopBtn = document.getElementById("stopBtn"),
+                    radiusInput = document.getElementById("radiusInput");
+            
+            drawBtn.onclick = function(){
+                drawBtn.disabled = true;
+                eraseBtn.disabled = stopBtn.disabled =false;
+                paintpolygonControl.startDraw();
+            }
+            eraseBtn.onclick = function(){
+                eraseBtn.disabled = true;
+                drawBtn.disabled = stopBtn.disabled =false;
+                paintpolygonControl.startErase();
+            }
+            stopBtn.onclick = function(){
+                stopBtn.disabled = true;
+                eraseBtn.disabled = drawBtn.disabled =false;
+                paintpolygonControl.stop();
+            }
+            radiusInput.oninput = function(){
+                paintpolygonControl.setRadius(radiusInput.value)
+            }
+        </script>
+    </body>
+</html>
