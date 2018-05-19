@@ -6,12 +6,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-        <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
         <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css"/>
         <script src="../node_modules/leaflet/dist/leaflet.js"></script>
-        <script src="../src/PaintPolygon.js"></script>
-        <link rel="stylesheet" href="../src/PaintPolygon.css"/>
-        <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+        <script src="../dist/Leaflet.PaintPolygon.js"></script>
 
         <style type="text/css">
             body {
@@ -55,7 +52,7 @@
                 ext: 'png'
             }).addTo(map);
 
-            var paintpolygonControl = L.control.paintPolygon({noui: true}).addTo(map);
+            var paintpolygonControl = L.control.paintPolygon({noUi: true}).addTo(map);
             
             var drawBtn = document.getElementById("drawBtn"),
                     eraseBtn = document.getElementById("eraseBtn"),
