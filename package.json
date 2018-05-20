@@ -1,6 +1,6 @@
 {
   "name": "leaflet-paintpolygon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Leaflet plugin to create polygon with circle, for touchscreen",
   "main": "index.js",
   "scripts": {
