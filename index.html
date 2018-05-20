@@ -24,6 +24,7 @@
         </style>
     </head>
     <body>
+        <a href="https://github.com/tcoupin/leaflet-paintpolygon"><img style="position: absolute; top: 0; right: 0; border: 0;z-index: 10000;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
         <div id="mapid"></div>
         <script>
 
@@ -37,7 +38,7 @@
             ext: 'png'
         }).addTo(map);
         
-        var paintpolygonControl = L.control.paintPolygon().addTo(map);
+        var paintpolygonControl = L.control.paintPolygon({position: 'topleft'}).addTo(map);
 
         //INTRO
         intro = introJs();

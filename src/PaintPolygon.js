@@ -211,7 +211,7 @@ const PaintPolygon = L.Control.extend({
     },
 
     _draw: function() {
-        if (this._data === undefined) {
+        if (this._data === undefined || this._data === null) {
             this._data = this._getCircleAsPolygon();
         } else {
             this._data = turf.union(this._data, this._getCircleAsPolygon());
@@ -222,7 +222,7 @@ const PaintPolygon = L.Control.extend({
         this._layer = L.geoJSON(this._data).addTo(this._map);
     },
     _erase: function() {
-        if (this._data === undefined) {
+        if (this._data === undefined || this._data === null) {
             return;
         } else {
             this._data = turf.difference(this._data, this._getCircleAsPolygon());
