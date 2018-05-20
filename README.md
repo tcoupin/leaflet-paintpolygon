@@ -1,6 +1,6 @@
 # leaflet-paintpolygon
 
-![Dependency Status](https://david-dm.org/tcoupin/node-pgrouting.svg)](https://david-dm.org/tcoupin/leaflet-paintpolygon)
+[![Dependency Status](https://david-dm.org/tcoupin/node-pgrouting.svg)](https://david-dm.org/tcoupin/leaflet-paintpolygon)
 [![npm](https://img.shields.io/npm/dt/leaflet-paintpolygon.svg?style=flat-square)](https://www.npmjs.com/package/leaflet-paintpolygon)
 [![npm](https://img.shields.io/npm/v/leaflet-paintpolygon.svg?style=flat-square)](https://www.npmjs.com/package/leaflet-paintpolygon)
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/tcoupin/leaflet-paintpolygon.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Ftcoupin%2Fleaflet-paintpolygon)
