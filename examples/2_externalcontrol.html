@@ -52,7 +52,7 @@
                 ext: 'png'
             }).addTo(map);
 
-            var paintpolygonControl = L.control.paintPolygon({noUi: true}).addTo(map);
+            var paintpolygonControl = L.control.paintPolygon({menu: false}).addTo(map);
             
             var drawBtn = document.getElementById("drawBtn"),
                     eraseBtn = document.getElementById("eraseBtn"),

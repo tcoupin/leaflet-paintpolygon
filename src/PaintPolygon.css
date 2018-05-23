@@ -13,16 +13,20 @@
     filter: invert(75%);
 }
 
-.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-brush {
+.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-trash {
     background-position: 0px 0px;
 }
 
-.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-eraser {
+.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-brush {
     background-position: 0px -30px;
 }
 
-.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-size {
+.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-eraser {
     background-position: 0px -60px;
+}
+
+.leaflet-control-paintpolygon-icon.leaflet-control-paintpolygon-icon-size {
+    background-position: 0px -90px;
 }
 
 

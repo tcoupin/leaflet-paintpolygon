@@ -35,13 +35,17 @@ L.control.paintPolygon().addTo(map)
             color: '#ff324a',
             weight: 1
         },
-        noUi: false               // Don't add control UI on map, you need to build your own UI (on map or not)
-    }
+        menu: {                   // Customize menu, set to false to prevent adding control UI on map, you need to build your own UI (on map or not)
+        	drawErase: true,
+            size: true,
+            eraseAll: true
+        }
+}               
 ```
 
 ### External control
 
-Add `noUi: false` in options object to prevent UI creation and bind your own UI to controls methods. See below for API and [this example](https://tcoupin.github.io/leaflet-paintpolygon/examples/2_externalcontrol.html).
+Add `menu: false` in options object to prevent UI creation and bind your own UI to controls methods. See below for API and [this example](https://tcoupin.github.io/leaflet-paintpolygon/examples/2_externalcontrol.html).
 
 ## API
 

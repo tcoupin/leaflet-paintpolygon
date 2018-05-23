@@ -18,7 +18,11 @@ const PaintPolygon = L.Control.extend({
             color: '#ff324a',
             weight: 1
         },
-        noUi: false
+        menu: {
+            drawErase: true,
+            size: true,
+            eraseAll: true
+        }
     },
 
     _latlng: [0, 0],
@@ -27,7 +31,7 @@ const PaintPolygon = L.Control.extend({
         this._map = map;
         this.setRadius(this.options.radius);
 
-        if (this.options.noUi === true) {
+        if (this.options.menu === false) {
             return L.DomUtil.create('div');
         }
 
@@ -77,7 +81,7 @@ const PaintPolygon = L.Control.extend({
     getLayer: function() {
         return this._layer;
     },
-    setData: function(data){
+    setData: function(data) {
         this._data = data;
         if (this._layer !== undefined) {
             this._layer.remove();
@@ -94,27 +98,34 @@ const PaintPolygon = L.Control.extend({
     /////////////////////////
     // Menu creation and click callback
     _createMenu: function() {
-        this._iconDraw = L.DomUtil.create('a', 'leaflet-control-paintpolygon-icon leaflet-control-paintpolygon-icon-brush', this._container);
-        this._iconErase = L.DomUtil.create('a', 'leaflet-control-paintpolygon-icon leaflet-control-paintpolygon-icon-eraser', this._container);
-        this._iconSize = L.DomUtil.create('a', 'leaflet-control-paintpolygon-icon leaflet-control-paintpolygon-icon-size', this._container);
+        if (this.options.menu.drawErase !== false) {
+            this._iconDraw = L.DomUtil.create('a', 'leaflet-control-paintpolygon-icon leaflet-control-paintpolygon-icon-brush', this._container);
+            this._iconErase = L.DomUtil.create('a', 'leaflet-control-paintpolygon-icon leaflet-control-paintpolygon-icon-eraser', this._container);
+            L.DomEvent.on(this._iconDraw, 'click mousedown', this._clickDraw, this);
+            L.DomEvent.on(this._iconErase, 'click mousedown', this._clickErase, this);
+        }
 
-        this._menu = L.DomUtil.create('div', 'leaflet-bar leaflet-control-paintpolygon-menu', this._container);
-        L.DomEvent.disableClickPropagation(this._menu);
+        if (this.options.menu.size !== false) {
+            this._iconSize = L.DomUtil.create('a', 'leaflet-control-paintpolygon-icon leaflet-control-paintpolygon-icon-size', this._container);
 
-        var menuContent = L.DomUtil.create('div', 'leaflet-control-paintpolygon-menu-content', this._menu);
-        var cursor = L.DomUtil.create('input', '', menuContent);
-        cursor.type = "range";
-        cursor.value = this._radius;
-        cursor.min = this.options.minRadius;
-        cursor.max = this.options.maxRadius;
+            this._menu = L.DomUtil.create('div', 'leaflet-bar leaflet-control-paintpolygon-menu', this._container);
+            L.DomEvent.disableClickPropagation(this._menu);
 
+            var menuContent = L.DomUtil.create('div', 'leaflet-control-paintpolygon-menu-content', this._menu);
+            var cursor = L.DomUtil.create('input', '', menuContent);
+            cursor.type = "range";
+            cursor.value = this._radius;
+            cursor.min = this.options.minRadius;
+            cursor.max = this.options.maxRadius;
 
+            L.DomEvent.on(cursor, 'input change', this._cursorMove, this);
+            L.DomEvent.on(this._iconSize, 'click mousedown', this._clickSize, this);
+        }
 
-        L.DomEvent.on(cursor, 'input change', this._cursorMove, this);
-        L.DomEvent.on(this._iconDraw, 'click mousedown', this._clickDraw, this);
-        L.DomEvent.on(this._iconErase, 'click mousedown', this._clickErase, this);
-        L.DomEvent.on(this._iconSize, 'click mousedown', this._clickSize, this);
-
+        if (this.options.menu.eraseAll !== false) {
+            this._iconEraseAll = L.DomUtil.create('a', 'leaflet-control-paintpolygon-icon leaflet-control-paintpolygon-icon-trash', this._container);
+            L.DomEvent.on(this._iconEraseAll, 'click mousedown', this._clickEraseAll, this);
+        }
     },
 
     _clickDraw: function(evt) {
@@ -153,6 +164,9 @@ const PaintPolygon = L.Control.extend({
         } else {
             this._openMenu();
         }
+    },
+    _clickEraseAll: function(evt) {
+        this.eraseAll();
     },
     _resetMenu: function() {
         L.DomUtil.removeClass(this._iconDraw, "leaflet-control-paintpolygon-icon-active");
