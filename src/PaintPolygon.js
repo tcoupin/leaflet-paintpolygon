@@ -77,6 +77,19 @@ const PaintPolygon = L.Control.extend({
     getLayer: function() {
         return this._layer;
     },
+    setData: function(data){
+        this._data = data;
+        if (this._layer !== undefined) {
+            this._layer.remove();
+        }
+        this._layer = L.geoJSON(this._data).addTo(this._map);
+    },
+    getData: function() {
+        return this._data;
+    },
+    eraseAll: function() {
+        this.setData();
+    },
 
     /////////////////////////
     // Menu creation and click callback
@@ -212,25 +225,17 @@ const PaintPolygon = L.Control.extend({
 
     _draw: function() {
         if (this._data === undefined || this._data === null) {
-            this._data = this._getCircleAsPolygon();
+            this.setData(this._getCircleAsPolygon());
         } else {
-            this._data = turf.union(this._data, this._getCircleAsPolygon());
+            this.setData(turf.union(this._data, this._getCircleAsPolygon()));
         }
-        if (this._layer !== undefined) {
-            this._layer.remove();
-        }
-        this._layer = L.geoJSON(this._data).addTo(this._map);
     },
     _erase: function() {
         if (this._data === undefined || this._data === null) {
             return;
         } else {
-            this._data = turf.difference(this._data, this._getCircleAsPolygon());
+            this.setData(turf.difference(this._data, this._getCircleAsPolygon()));
         }
-        if (this._layer !== undefined) {
-            this._layer.remove();
-        }
-        this._layer = L.geoJSON(this._data).addTo(this._map);
     },
 
 });

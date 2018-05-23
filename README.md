@@ -49,4 +49,7 @@ Add `noUi: false` in options object to prevent UI creation and bind your own UI 
 * `startDraw()`: start drawing
 * `startErase()`: start erasing
 * `stop()`: stop drawing or erasing
+* `eraseAll()`: erase all...
+* `getData()`: return feature as GeoJSON
+* `setData(data)`: set the feature as GeoJSON
 * `getLayer()`: return [GeoJSON layer](https://leafletjs.com/reference-1.3.0.html#geojson)
