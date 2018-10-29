@@ -22,7 +22,16 @@ const PaintPolygon = L.Control.extend({
             drawErase: true,
             size: true,
             eraseAll: true
-        }
+        },
+        layerOptions {
+            stroke: true,
+            color: '#3388ff',
+            weight: 3,
+            opacity: 1,
+            fill: true,
+            fillColor: 'blue',
+            fillOpacity: 1
+        },
     },
 
     _latlng: [0, 0],
@@ -87,11 +96,7 @@ const PaintPolygon = L.Control.extend({
         if (this._layer !== undefined) {
             this._layer.remove();
         }
-        this._layer = L.geoJSON(this._data, style: {
-            "color": "#ff7800",
-            "weight": 5,
-            "opacity": 0.65
-        }).addTo(this._map);
+        this._layer = L.geoJSON(this._data, style: this.options.layerOptions).addTo(this._map);
     },
     getData: function() {
         return this._data;
