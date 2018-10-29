@@ -11,6 +11,8 @@ const PaintPolygon = L.Control.extend({
         radius: 30,
         minRadius: 10,
         maxRadius: 50,
+        layerOptions: {
+        },
         drawOptions: {
             weight: 1
         },
@@ -22,15 +24,6 @@ const PaintPolygon = L.Control.extend({
             drawErase: true,
             size: true,
             eraseAll: true
-        },
-        layerOptions {
-            stroke: true,
-            color: '#3388ff',
-            weight: 3,
-            opacity: 1,
-            fill: true,
-            fillColor: 'blue',
-            fillOpacity: 1
         },
     },
 
@@ -96,7 +89,7 @@ const PaintPolygon = L.Control.extend({
         if (this._layer !== undefined) {
             this._layer.remove();
         }
-        this._layer = L.geoJSON(this._data, style: this.options.layerOptions).addTo(this._map);
+        this._layer = L.geoJSON(this._data, this.options.layerOptions).addTo(this._map);
     },
     getData: function() {
         return this._data;
