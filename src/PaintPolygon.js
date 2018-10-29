@@ -87,7 +87,11 @@ const PaintPolygon = L.Control.extend({
         if (this._layer !== undefined) {
             this._layer.remove();
         }
-        this._layer = L.geoJSON(this._data).addTo(this._map);
+        this._layer = L.geoJSON(this._data, style: {
+            "color": "#ff7800",
+            "weight": 5,
+            "opacity": 0.65
+        }).addTo(this._map);
     },
     getData: function() {
         return this._data;
