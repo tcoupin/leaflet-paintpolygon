@@ -254,7 +254,11 @@ const PaintPolygon = L.Control.extend({
         if (this._data === undefined || this._data === null) {
             this.setData(this._getCircleAsPolygon(latlng, zoom, radius));
         } else {
-            this.setData(turf.union(this._data, this._getCircleAsPolygon(latlng, zoom, radius)));
+            let fc = {
+                type: "FeatureCollection",
+                features:[this._data, this._getCircleAsPolygon(latlng, zoom, radius)]
+            };
+            this.setData(turf.union(fc));
         }
     },
     _erase: function(latlng, zoom, radius) {

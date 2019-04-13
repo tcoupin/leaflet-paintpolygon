@@ -1,6 +1,6 @@
-import circle from '@turf/circle';
-import union from '@turf/union';
-import difference from '@turf/difference';
+import circle from 'turf/src/circle';
+import union from 'turf/src/union/';
+import difference from 'turf/src/difference';
 
 
 let turf = {
